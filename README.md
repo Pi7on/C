@@ -1,1 +1,1 @@
-Just a collection of all the C exercises :)
+Just a collection of all my C exercises :)
