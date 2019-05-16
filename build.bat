@@ -1,10 +1,10 @@
 @echo off
+rem todo: check se un file è già presente in src, se si, salva il nome e fai set NAME=nome
 
 rem -------variables-----------------------
-set NAME=test
+set NAME=main
 set MINGW_PATH=C:\MINGW\mingw64\bin
 set G_FLAGS=-g3
-
 set PATH=%MINGW_PATH%;%PATH%
 
 rem ------paths check-----------------------
@@ -14,10 +14,16 @@ if NOT exist "src" (
 	echo. >> %NAME%.cpp
 	popd
 )
+else (
+	pushd src
+	if NOT exist "*.cpp" (
+		echo. >> %NAME%.cpp
+	)
+	popd
+)
 if NOT exist "build" (
 	mkdir build
 )
-
 
 rem -------compile----------------------------
 pushd build
