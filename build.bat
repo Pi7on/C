@@ -4,6 +4,7 @@ rem todo: check se un file è già presente in src, se si, salva il nome e fai s
 rem -------variables-----------------------
 set NAME=main
 set MINGW_PATH=C:\MINGW\mingw64\bin
+set NOTEPAD_PATH=D:\PROGRAMMI\NOTEPAD++\notepad++
 set G_FLAGS=-g3
 set PATH=%MINGW_PATH%;%PATH%
 
@@ -12,12 +13,14 @@ if NOT exist "src" (
 	mkdir src
 	pushd src
 	echo. >> %NAME%.cpp
+	%NOTEPAD_PATH% %NAME%.cpp
 	popd
 )
 else (
 	pushd src
 	if NOT exist "*.cpp" (
 		echo. >> %NAME%.cpp
+		%NOTEPAD_PATH% %NAME%.cpp
 	)
 	popd
 )
