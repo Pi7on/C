@@ -1,13 +1,19 @@
 @echo off
 
 rem -------variables-----------------------
-set EXE_NAME="test.exe"
-set MINGW_PATH="C:\MINGW\mingw64\bin"
-set G_FLAGS="-g3"
+set NAME=test
+set MINGW_PATH=C:\MINGW\mingw64\bin
+set G_FLAGS=-g3
 
 set PATH=%MINGW_PATH%;%PATH%
 
 rem ------paths check-----------------------
+if NOT exist "src" (
+	mkdir src
+	pushd src
+	echo. >> %NAME%.cpp
+	popd
+)
 if NOT exist "build" (
 	mkdir build
 )
@@ -15,18 +21,20 @@ if NOT exist "build" (
 
 rem -------compile----------------------------
 pushd build
-if exist %EXE_NAME% (
-    del %EXE_NAME%
+if exist "%NAME%.exe" (
+    del %NAME%.exe
 )
+popd 
+
 cls
 echo compiling...
-g++ %G_FLAGS% ..\src\test.cpp -o %EXE_NAME%
+g++ %G_FLAGS% src\%NAME%.cpp -o build\%NAME%.exe
 
 rem ------launch exe-------------------------
 rem note: /c flag closes the window as soon as the program finishes
 rem note: deleting the exe after execution so it doesn't launch is compilation fails
-
-if exist %EXE_NAME% (
-    start cmd /C %EXE_NAME%
+pushd build
+if exist "%NAME%.exe" (
+    start cmd /C %NAME%.exe
 )
 popd
