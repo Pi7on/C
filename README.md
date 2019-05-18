@@ -1,1 +1,1 @@
-Just a collection of all my exercises :)
+A collection of my scripts and tools
