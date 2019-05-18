@@ -41,7 +41,7 @@ g++ %G_FLAGS% src\%NAME%.cpp -o build\%NAME%.exe
 
 rem ------launch exe-------------------------
 rem note: /c flag closes the window as soon as the program finishes
-rem note: deleting the exe after execution so it doesn't launch is compilation fails
+rem note: deleting the exe after execution so it doesn't launch if compilation fails
 pushd build
 if exist "%NAME%.exe" (
     start cmd /C %NAME%.exe
